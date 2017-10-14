@@ -23,6 +23,8 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->date('start_at');
             $table->date('end_at')->nullable();
+            $table->integer('raw_id')->unsigned()->nullable();
+            $table->boolean('is_publish')->default(false)->index();
             $table->timestamps();
 
             $table->foreign('category_id')
