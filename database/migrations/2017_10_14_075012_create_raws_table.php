@@ -18,6 +18,7 @@ class CreateRawsTable extends Migration
             $table->enum('tipe', ['ig', 'banner', 'twitter', 'facebook'])->default('ig');
 
             $table->string('image');
+            $table->string('author');
             $table->text('content');
             $table->string('source');
             $table->string('unique_id')->unique();

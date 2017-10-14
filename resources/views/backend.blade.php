@@ -13,7 +13,8 @@
 	<title>PROMOGRAFI</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link href="{{asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-	<link href="{{asset('bootstrap/css/toastr.min.css')}}" rel="stylesheet">
+	<link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
+	<link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 	<link href="{{asset('css/backend.css')}}" rel="stylesheet">
 
 </head>
@@ -74,6 +75,7 @@
 	<script src="{{asset('js/jquery.min.js')}}"></script>
 	<script src="{{asset('bootstrap/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('js/toastr.min.js')}}"></script>
+	<script src="{{asset('js/select2.min.js')}}"></script>
 	<script src="{{asset('js/backend.js')}}"></script>
 </body>
 

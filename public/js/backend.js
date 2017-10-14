@@ -6,6 +6,8 @@ $(function() {
 	});
 
 	console.log('alive')
+	$('.mall-select').select2();
+
 
 	$('table[data-form="deleteForm"]').on('click', '.delete', function(e) {
 		e.preventDefault();

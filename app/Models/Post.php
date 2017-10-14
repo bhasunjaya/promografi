@@ -23,4 +23,19 @@ class Post extends Model
             ],
         ];
     }
+
+    public function malls()
+    {
+        return $this->belongsToMany('App\Models\Mall');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
+
+    public function raw()
+    {
+        return $this->belongsTo('App\Models\Raw');
+    }
 }

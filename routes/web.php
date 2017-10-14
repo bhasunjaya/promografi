@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
-    Route::resource('raw', 'CategoryController');
-    Route::resource('post', 'CategoryController');
+    Route::resource('raw', 'RawController');
+    Route::resource('post', 'PostController');
     Route::resource('mall', 'MallController');
 });
