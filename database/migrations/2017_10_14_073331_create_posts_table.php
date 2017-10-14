@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('excerpt');
             $table->text('content');
-            $table->smalltext('price')->nullable();
+            $table->text('price')->nullable();
             $table->string('image');
             $table->date('start_at');
             $table->date('end_at')->nullable();
