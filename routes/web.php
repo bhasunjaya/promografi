@@ -11,9 +11,10 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@index');
+Route::get('/category', 'PageController@category');
+Route::get('/mall', 'PageController@mall');
+Route::get('/detail', 'PageController@detail');
 
 Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
