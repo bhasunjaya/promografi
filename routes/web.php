@@ -19,5 +19,5 @@ Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('raw', 'CategoryController');
     Route::resource('post', 'CategoryController');
-    Route::resource('mall', 'CategoryController');
+    Route::resource('mall', 'MallController');
 });
