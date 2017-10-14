@@ -2,18 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index(Request $request)
     {
-        return view('page.index');
+        $featured = Post::with('category', 'malls')
+            ->publish()
+            ->latest()
+            ->featured()
+            ->take(3)
+            ->get();
+
+        $recent = Post::with('category', 'malls')
+            ->publish()
+            ->latest()
+            ->take(12)
+            ->get();
+        // return $featured;
+        return view('page.index', compact('featured', 'recent'));
     }
 
-    public function category()
+    public function category($slug)
     {
-        return view('page.category');
+        $category = Category::whereSlug($slug)->firstOrFail();
+
+        $posts = Post::with('category', 'malls')
+            ->publish()
+            ->latest()
+            ->whereCategoryId($category->id)
+            ->get();
+        return view('page.category', compact('category', 'posts'));
+    }
+
+    public function categories()
+    {
+
     }
 
     public function mall()

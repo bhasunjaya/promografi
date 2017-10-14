@@ -19,7 +19,7 @@
 <body>
 
     <div class="page home-page">
-        <header class="hero has-dark-background">
+        <header class="hero @yield('has-dark-background')">
             <div class="hero-wrapper">
                 <!--============ Main Navigation ====================================================================-->
                 <div class="main-navigation">
@@ -43,6 +43,8 @@
                             <!--end navbar-collapse-->
                         </nav>
                         <!--end navbar-->
+
+                        @yield('breadcrumbs')
                     </div>
                     <!--end container-->
                 </div>

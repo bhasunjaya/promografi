@@ -1,5 +1,9 @@
 @extends('frontend')
 <!-- -->
+@section('has-dark-background')
+has-dark-background
+@endsection
+<!-- -->
 @section('page-background')
 <div class="background">
 	<div class="background-image">
@@ -8,57 +12,6 @@
 </div>
 @endsection
 
-<!-- -->
-@section('hero-form')
-<!--Main Form-->
-<form class="hero-form form">
-	<div class="container">
-		<div class="main-search-form">
-			<div class="form-row">
-				<div class="col-md-3 col-sm-3">
-					<div class="form-group">
-						<label for="what" class="col-form-label">What?</label>
-						<input name="keyword" type="text" class="form-control" id="what" placeholder="What are you looking for?">
-					</div>
-					<!--end form-group-->
-				</div>
-				<!--end col-md-3-->
-				<div class="col-md-3 col-sm-3">
-					<div class="form-group">
-						<label for="input-location" class="col-form-label">Where?</label>
-						<input name="location" type="text" class="form-control" id="input-location" placeholder="Enter Location">
-						<span class="geo-location input-group-addon" data-toggle="tooltip" data-placement="top" title="Find My Position"><i class="fa fa-map-marker"></i></span>
-					</div>
-					<!--end form-group-->
-				</div>
-				<!--end col-md-3-->
-				<div class="col-md-3 col-sm-3">
-					<div class="form-group">
-						<label for="category" class="col-form-label">Category?</label>
-						<select name="category" id="category" data-placeholder="Select Category">
-							<option value="">Select Category</option>
-							<option value="1">Computers</option>
-							<option value="2">Real Estate</option>
-							<option value="3">Cars & Motorcycles</option>
-							<option value="4">Furniture</option>
-							<option value="5">Pets & Animals</option>
-						</select>
-					</div>
-					<!--end form-group-->
-				</div>
-				<!--end col-md-3-->
-				<div class="col-md-3 col-sm-3">
-					<button type="submit" class="btn btn-primary width-100">Search</button>
-				</div>
-				<!--end col-md-3-->
-			</div>
-			<!--end form-row-->
-		</div>
-		<!--end main-search-form-->
-	</div>
-</form>
-@endsection
-<!-- -->
 
 @section('page-title')
 <div class="page-title">
@@ -76,7 +29,9 @@
 	<div class="container">
 		<h2>Featured Ads</h2>
 		<div class="items grid grid-xl-3-items grid-lg-3-items grid-md-2-items">
+			@foreach($featured as $post)
 			@include('include.item')
+			@endforeach
 		</div>
 	</div>
 </section>
@@ -148,7 +103,7 @@
 	<div class="container">
 		<h2>Recent Ads</h2>
 		<div class="items grid grid-xl-4-items grid-lg-3-items grid-md-2-items">
-			@foreach(range(0,20) as $cv)
+			@foreach($recent as $post)
 			@include('include.item')
 			@endforeach
 		</div>

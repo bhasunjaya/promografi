@@ -11,10 +11,11 @@
 |
  */
 
-Route::get('/', 'PageController@index');
-Route::get('/category', 'PageController@category');
-Route::get('/mall', 'PageController@mall');
-Route::get('/detail', 'PageController@detail');
+Route::get('/', 'PageController@index')->name('home');
+Route::get('/mall', 'PageController@mall')->name('mall');
+Route::get('/category/{slug}', 'PageController@category')->name('category');
+Route::get('/category', 'PageController@categories')->name('categories');
+Route::get('/promo/{slug}', 'PageController@detail')->name('promo');
 
 Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
