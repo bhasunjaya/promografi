@@ -47,22 +47,10 @@
                     <!--end container-->
                 </div>
                 <!--============ End Main Navigation ================================================================-->
+                @yield('page-title')
+                @yield('hero-form')
+                @yield('page-background')
 
-                <!--============ Page Title =========================================================================-->
-                <div class="page-title">
-                    <div class="container">
-                        <h1>Listing List Full Width</h1>
-                    </div>
-                    <!--end container-->
-                </div>
-                <!--============ End Page Title =====================================================================-->
-                <div class="background">
-                    <div class="background-image">
-                        <img src="{{asset('images/hero-background-image-01.jpg')}}" alt="">
-                    </div>
-                    <!--end background-image-->
-                </div>
-                <!--end background-->
 
 
 

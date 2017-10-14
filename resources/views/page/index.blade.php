@@ -1,155 +1,147 @@
-@extends('frontend') @section('content')
-{{-- <section class="block">
+@extends('frontend')
+<!-- -->
+@section('page-background')
+<div class="background">
+	<div class="background-image">
+		<img src="{{asset('images/hero-background-image-01.jpg')}}" alt="">
+	</div>
+</div>
+@endsection
+
+<!-- -->
+@section('hero-form')
+<!--Main Form-->
+<form class="hero-form form">
 	<div class="container">
-		<h2>Categories</h2>
-		<ul class="categories-list clearfix">
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-furniture-b.png" alt="">
-                            </i>
-				<h3><a href="#">Furniture</a></h3>
-				<div class="sub-categories">
-					<a href="#">Beds</a>
-					<a href="#">Sofas</a>
-					<a href="#">Garden</a>
+		<div class="main-search-form">
+			<div class="form-row">
+				<div class="col-md-3 col-sm-3">
+					<div class="form-group">
+						<label for="what" class="col-form-label">What?</label>
+						<input name="keyword" type="text" class="form-control" id="what" placeholder="What are you looking for?">
+					</div>
+					<!--end form-group-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-pets-b.png" alt="">
-                            </i>
-				<h3><a href="#">Pets</a></h3>
-				<div class="sub-categories">
-					<a href="#">Dogs</a>
-					<a href="#">Cats</a>
-					<a href="#">Exotic</a>
+				<!--end col-md-3-->
+				<div class="col-md-3 col-sm-3">
+					<div class="form-group">
+						<label for="input-location" class="col-form-label">Where?</label>
+						<input name="location" type="text" class="form-control" id="input-location" placeholder="Enter Location">
+						<span class="geo-location input-group-addon" data-toggle="tooltip" data-placement="top" title="Find My Position"><i class="fa fa-map-marker"></i></span>
+					</div>
+					<!--end form-group-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-real-estate-b.png" alt="">
-                            </i>
-				<h3><a href="#">Real Estate</a></h3>
-				<div class="sub-categories">
-					<a href="#">Houses</a>
-					<a href="#">Apartments</a>
+				<!--end col-md-3-->
+				<div class="col-md-3 col-sm-3">
+					<div class="form-group">
+						<label for="category" class="col-form-label">Category?</label>
+						<select name="category" id="category" data-placeholder="Select Category">
+							<option value="">Select Category</option>
+							<option value="1">Computers</option>
+							<option value="2">Real Estate</option>
+							<option value="3">Cars & Motorcycles</option>
+							<option value="4">Furniture</option>
+							<option value="5">Pets & Animals</option>
+						</select>
+					</div>
+					<!--end form-group-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-jobs-b.png" alt="">
-                            </i>
-				<h3><a href="#">Jobs</a></h3>
-				<div class="sub-categories">
-					<a href="#">Find Job</a>
-					<a href="#">Offer Job</a>
+				<!--end col-md-3-->
+				<div class="col-md-3 col-sm-3">
+					<button type="submit" class="btn btn-primary width-100">Search</button>
 				</div>
-			</li>
-			<!--end category item-->
+				<!--end col-md-3-->
+			</div>
+			<!--end form-row-->
+		</div>
+		<!--end main-search-form-->
+	</div>
+</form>
+@endsection
+<!-- -->
 
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-cars-b.png" alt="">
-                            </i>
-				<h3><a href="#">Car</a></h3>
-				<div class="sub-categories">
-					<a href="#">New</a>
-					<a href="#">Used</a>
-					<a href="#">Rent</a>
-				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-mobile-b.png" alt="">
-                            </i>
-				<h3><a href="#">Mobile</a></h3>
-				<div class="sub-categories">
-					<a href="#">Apple</a>
-					<a href="#">Samsung</a>
-				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-cameras-b.png" alt="">
-                            </i>
-				<h3><a href="#">Cameras</a></h3>
-				<div class="sub-categories">
-					<a href="#">Photo</a>
-					<a href="#">Video</a>
-					<a href="#">Lenses</a>
-				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-sport-b.png" alt="">
-                            </i>
-				<h3><a href="#">Sport</a></h3>
-				<div class="sub-categories">
-					<a href="#">Ski</a>
-					<a href="#">Bike</a>
-					<a href="#">Hockey</a>
-				</div>
-			</li>
-			<!--end category item-->
+@section('page-title')
+<div class="page-title">
+	<div class="container">
+		<h1 class="center">
+			Kalimat teaser untuk listing <a href="#">promo</a> dan ada keywordnya
+		</h1>
+	</div>
+</div>
+@endsection
 
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-electro-b.png" alt="">
-                            </i>
-				<h3><a href="#">Electro</a></h3>
-				<div class="sub-categories">
-					<a href="#">TV</a>
-					<a href="#">Radio</a>
-					<a href="#">PC</a>
+<!-- -->
+@section('content')
+<section class="block">
+	<div class="container">
+		<h2>Featured Ads</h2>
+		<div class="items grid grid-xl-3-items grid-lg-3-items grid-md-2-items">
+			@include('include.item')
+		</div>
+	</div>
+</section>
+<section class="block">
+	<div class="container">
+		<div class="block">
+			<h2>Selling With Us Is Easy</h2>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="feature-box">
+						<figure>
+							<img src="assets/icons/feature-user.png" alt="">
+							<span>1</span>
+						</figure>
+						<h3>Create an Account</h3>
+						<p>Etiam molestie viverra dui vitae mattis. Ut velit est</p>
+					</div>
+					<!--end feature-box-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-clothing-b.png" alt="">
-                            </i>
-				<h3><a href="#">Clothing</a></h3>
-				<div class="sub-categories">
-					<a href="#">Shirts</a>
-					<a href="#">Trousers</a>
+				<!--end col-->
+				<div class="col-md-3">
+					<div class="feature-box">
+						<figure>
+							<img src="assets/icons/feature-upload.png" alt="">
+							<span>2</span>
+						</figure>
+						<h3>Submit Your Ad</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
+					<!--end feature-box-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-books-b.png" alt="">
-                            </i>
-				<h3><a href="#">Books</a></h3>
-				<div class="sub-categories">
-					<a href="#">Fantasy</a>
-					<a href="#">History</a>
-					<a href="#">Sci-Fi</a>
+				<!--end col-->
+				<div class="col-md-3">
+					<div class="feature-box">
+						<figure>
+							<img src="assets/icons/feature-like.png" alt="">
+							<span>3</span>
+						</figure>
+						<h3>Make a Deal</h3>
+						<p>Nunc ultrices eu urna quis cursus. Sed viverra ullamcorper</p>
+					</div>
+					<!--end feature-box-->
 				</div>
-			</li>
-			<!--end category item-->
-			<li>
-				<i class="category-icon">
-                                <img src="assets/icons/category-music-b.png" alt="">
-                            </i>
-				<h3><a href="#">Music</a></h3>
-				<div class="sub-categories">
-					<a href="#">Rock</a>
-					<a href="#">Techno</a>
-					<a href="#">Folk</a>
+				<!--end col-->
+				<div class="col-md-3">
+					<div class="feature-box">
+						<figure>
+							<img src="assets/icons/feature-wallet.png" alt="">
+							<span>4</span>
+						</figure>
+						<h3>Enjoy the Money!</h3>
+						<p>Integer nisl ipsum, sodales sed scelerisque nec, aliquet sit</p>
+					</div>
+					<!--end feature-box-->
 				</div>
-			</li>
-			<!--end category item-->
-		</ul>
-		<!--end categories-list-->
+				<!--end col-->
+			</div>
+			<!--end row-->
+		</div>
+		<!--end block-->
 	</div>
 	<!--end container-->
-</section> --}}
+	<div class="background" data-background-color="#fff" style="background-color: rgb(255, 255, 255);"></div>
+	<!--end background-->
+</section>
 
 <!--============ Recent Ads =============================================================================-->
 <section class="block">
@@ -157,60 +149,7 @@
 		<h2>Recent Ads</h2>
 		<div class="items grid grid-xl-4-items grid-lg-3-items grid-md-2-items">
 			@foreach(range(0,20) as $cv)
-			<div class="item">
-				<div class="wrapper">
-					<div class="image">
-						<h3>
-                                        <a href="#" class="tag category">Real Estate</a>
-                                        <a href="single-listing-1.html" class="title">Luxury Apartment</a>
-                                        <span class="tag">Offer</span>
-                                    </h3>
-						<a href="single-listing-1.html" class="image-wrapper background-image">
-                                        <img src="{{asset('images/dummy.jpg')}}" alt="">
-                                    </a>
-					</div>
-					<!--end image-->
-					<h4 class="location"><a href="#">Greeley, CO</a></h4>
-					<div class="price">$75,000</div>
-					<div class="meta">
-						<figure>
-							<i class="fa fa-calendar-o"></i>13.03.2017
-						</figure>
-						<figure>
-							<a href="#">
-                                            <i class="fa fa-user"></i>Hills Estate
-                                        </a>
-						</figure>
-					</div>
-					<!--end meta-->
-					<div class="description">
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam venenatis lobortis</p>
-					</div>
-					<!--end description-->
-					<div class="additional-info">
-						<ul>
-							<li>
-								<figure>Area</figure>
-								<aside>368m<sup>2</sup></aside>
-							</li>
-							<li>
-								<figure>Bathrooms</figure>
-								<aside>2</aside>
-							</li>
-							<li>
-								<figure>Bedrooms</figure>
-								<aside>3</aside>
-							</li>
-							<li>
-								<figure>Garage</figure>
-								<aside>1</aside>
-							</li>
-						</ul>
-					</div>
-					<!--end addition-info-->
-					<a href="single-listing-1.html" class="detail text-caps underline">Detail</a>
-				</div>
-			</div>
+			@include('include.item')
 			@endforeach
 		</div>
 	</div>
