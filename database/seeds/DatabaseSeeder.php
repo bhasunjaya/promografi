@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         DB::table('malls')->truncate();
+        DB::table('categories')->truncate();
         DB::table('mall_post')->truncate();
         DB::table('posts')->truncate();
         DB::table('raws')->truncate();

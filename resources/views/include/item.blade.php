@@ -16,6 +16,23 @@
 		<div class="description">
 			<p>{{$post->excerpt}}</p>
 		</div>
+		<div class="additional-info">
+			<ul>
+				<li>
+					<figure>Mulai</figure>
+					<aside>{{$post->start_at}}</aside>
+				</li>
+				<li>
+					<figure>Akhir</figure>
+					<aside>{{$post->start_at}}</aside>
+				</li>
+				<li>
+					<figure>Sisa Waktu</figure>
+					<aside>{{showTimeLeft($post)}} hari</aside>
+				</li>
+			</ul>
+		</div>
+
 		<!--end description-->
 		<a href="{{route('promo',$post->slug)}}" class="detail text-caps underline">Lihat Promo</a>
 	</div>

@@ -12,7 +12,7 @@
  */
 
 Route::get('/', 'PageController@index')->name('home');
-Route::get('/mall', 'PageController@mall')->name('mall');
+Route::get('/mall/{slug}', 'PageController@mall')->name('mall');
 Route::get('/category/{slug}', 'PageController@category')->name('category');
 Route::get('/category', 'PageController@categories')->name('categories');
 Route::get('/promo/{slug}', 'PageController@detail')->name('promo');

@@ -5,11 +5,11 @@ function showCity($post)
 {
 
     if ($post->malls->count() === 0) {
-        return 'online';
+        return '<span class="text-danger">Online</span>';
     }
 
     if ($post->malls->count() > 1) {
-        return '<a href="' . route('promo', $post->id) . '">' . $post->malls->count() . ' tempat</a>';
+        return '<a href="' . route('promo', $post->slug) . '">' . $post->malls->count() . ' tempat</a>';
     } else {
         $strings = [];
         foreach ($post->malls as $mall) {

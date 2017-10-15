@@ -40,7 +40,8 @@ class PageController extends Controller
 
     public function categories()
     {
-
+        $categories = Category::all();
+        return view('page.categories', compact('categories'));
     }
 
     public function mall()
@@ -48,8 +49,13 @@ class PageController extends Controller
         return view('page.mall');
     }
 
-    public function detail()
+    public function detail($slug)
     {
-        return view('page.detail');
+        $post = Post::with('category', 'malls')
+            ->whereSlug($slug)
+            ->publish()
+            ->firstOrFail();
+        // return $post;
+        return view('page.detail', compact('post'));
     }
 }
