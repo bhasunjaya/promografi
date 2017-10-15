@@ -17,6 +17,9 @@ Route::get('/category/{slug}', 'PageController@category')->name('category');
 Route::get('/category', 'PageController@categories')->name('categories');
 Route::get('/promo/{slug}', 'PageController@detail')->name('promo');
 
+Route::get('/ig', 'InstagramController@redirectToProvider');
+Route::get('/ig/callback', 'InstagramController@handleProviderCallback');
+
 Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('raw', 'RawController');
