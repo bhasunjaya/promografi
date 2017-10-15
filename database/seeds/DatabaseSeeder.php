@@ -2,6 +2,7 @@
 
 use App\Models\Category;
 use App\Models\Mall;
+use App\Models\Post;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         DB::table('malls')->truncate();
+        DB::table('categories')->truncate();
         DB::table('mall_post')->truncate();
         DB::table('posts')->truncate();
         DB::table('raws')->truncate();
@@ -27,13 +29,14 @@ class DatabaseSeeder extends Seeder
         $this->malls();
         $this->categories();
         $this->raws();
+        $this->posts();
 
     }
 
     public function malls()
     {
         $faker = Faker::create();
-        foreach (range(0, 5) as $c) {
+        foreach (range(0, 15) as $c) {
             $mall = new Mall;
             $mall->title = 'Mall of ' . $faker->word;
             $mall->description = $faker->paragraph;
@@ -79,5 +82,44 @@ class DatabaseSeeder extends Seeder
             ];
         }
         DB::table('raws')->insert($array);
+    }
+
+    public function posts()
+    {
+        $faker = Faker::create();
+        $malls = Mall::pluck('id')->toArray();
+
+        foreach (range(0, 29) as $i) {
+            $post = new Post;
+            $ts = $faker->dateTimeThisMonth()->format('Y-m-d H:i:s');
+            $ts = $faker->dateTimeBetween('-2 weeks', 'now')->format('Y-m-d H:i:s');
+
+            $now = $faker->dateTimeThisMonth();
+            $until = $faker->dateTimeBetween('now', '+ 30 days');
+
+            $prices = ['diskon:20%', 'buy one:get one', 'promo', 'midnite:sale'];
+
+            $post->category_id = rand(1, 4);
+            $post->title = $faker->sentence;
+            $post->excerpt = $faker->paragraph;
+            $post->content = $faker->paragraphs(3, true);
+            $post->price = $faker->randomElement($prices);
+            $post->image = asset('images/dummy.jpg');
+            $post->start_at = $now->format('Y-m-d');
+            $post->end_at = $until->format('Y-m-d');
+            $post->is_featured = $faker->boolean(30);
+            $post->is_online = $faker->boolean(30);
+            $post->is_publish = true;
+            $post->created_at = $ts;
+            $post->updated_at = $ts;
+            $post->save();
+
+            if ($faker->boolean(30)) {
+                $omalls = $faker->randomElements($malls, rand(1, 5));
+                $post->malls()->sync($omalls);
+
+            }
+
+        }
     }
 }

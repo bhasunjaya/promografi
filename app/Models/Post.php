@@ -38,4 +38,19 @@ class Post extends Model
     {
         return $this->belongsTo('App\Models\Raw');
     }
+
+    public function scopePublish($q)
+    {
+        return $q->where('is_publish', true);
+    }
+
+    public function scopeFeatured($q)
+    {
+        return $q->where('is_featured', true);
+    }
+
+    public function scopeOnline($q)
+    {
+        return $q->where('is_online', true);
+    }
 }
