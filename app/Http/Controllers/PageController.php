@@ -58,4 +58,10 @@ class PageController extends Controller
         // return $post;
         return view('page.detail', compact('post'));
     }
+
+    public function terms()
+    {
+        return view('page.terms');
+
+    }
 }

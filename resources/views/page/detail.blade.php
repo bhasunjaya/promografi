@@ -46,6 +46,7 @@
 						<div class="blog-post-content">
 							<h2>Deskripsi</h2>
 							<p>{{$post->content}}</p>
+							<p>source: <a href="https://instagram.com/p/6R94NOnk31/"><i class="fa fa-instagram"></i> bhasunjaya</a></p>
 							<hr>
 							<div class="de">
 								<h2>Lokasi</h2>
@@ -56,7 +57,6 @@
 									@endforeach
 								</dl>
 							</div>
-							@foreach($post->malls as $mall) @endforeach
 						</div>
 						<!--end blog-post-content-->
 					</article>
