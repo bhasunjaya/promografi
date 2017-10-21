@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->date('start_at');
             $table->date('end_at')->nullable();
             $table->integer('raw_id')->unsigned()->nullable();
+            $table->text('source');
             $table->boolean('is_featured')->default(false)->index();
             $table->boolean('is_online')->default(false);
             $table->boolean('is_publish')->default(false)->index();

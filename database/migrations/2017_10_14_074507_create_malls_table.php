@@ -18,6 +18,7 @@ class CreateMallsTable extends Migration
             $table->string('slug')->unique();
             $table->string('title');
             $table->text('description');
+            $table->string('city');
             $table->string('image');
             $table->timestamps();
         });

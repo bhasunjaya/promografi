@@ -31,7 +31,7 @@
 				<td class="col-md-2">
 
 					 <a href="{{ route('category.edit', $category->id) }}" class="btn btn-info btn-xs">edit</a>
-					 <a href="{{ route('category.destroy',$category->id) }}" class="btn btn-xs btn-danger delete">edit</a>
+					 <a href="{{ route('category.destroy',$category->id) }}" class="btn btn-xs btn-danger delete">delete</a>
 
 				</td>
 			</tr>

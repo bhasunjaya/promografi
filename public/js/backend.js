@@ -5,7 +5,6 @@ $(function() {
 		}
 	});
 
-	console.log('alive')
 	$('.mall-select').select2();
 
 
@@ -14,12 +13,12 @@ $(function() {
 		var url = $(this).attr('href');
 
 		$('#confirm').modal({ backdrop: 'static', keyboard: false }).on('click', '#delete-btn', function() {
-			console.log(url)
 			$.ajax({
 				url: url,
 				type: 'DELETE',
-				success: function(msg) {
+				success: function(r) {
 					$('#confirm').modal('hide')
+					$("#row-"+r.id).fadeOut('slow')
 				},
 				error: function(data) {
 					if (data.status === 422) {

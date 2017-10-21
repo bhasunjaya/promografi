@@ -1,6 +1,8 @@
 @extends('backend') @section('content')
 
 {!! $raws->links() !!}
+<button type="button" class="btn btn-default">Fetch From Instagram Like</button>
+<hr>
 <table class="table table-hover">
 
 	<tbody>
@@ -15,7 +17,7 @@
 						<h4 class="media-heading"><a href="#">{{$raw->author}}</a></h4>
 						<p>{{$raw->content}}</p>
 						<p>
-							<a href="{{route('post.create')}}?rid={{$raw->id}}">create post</a>
+							<a href="{{route('post.create')}}?rid={{$raw->id}}" class="btn btn-xs btn-info">create post from this source</a>
 						</p>
 					</div>
 				</div>

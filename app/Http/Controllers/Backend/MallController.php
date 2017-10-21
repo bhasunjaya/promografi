@@ -38,9 +38,15 @@ class MallController extends Controller
      */
     public function store(Request $request)
     {
+        $path = '';
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('malls', 'uploads');
+        }
         $mall = new Mall;
         $mall->title = $request->title;
         $mall->description = $request->description;
+        $mall->image = $path;
+        $mall->city = $request->city;
         $mall->save();
 
         return redirect('backend/mall')->withMessage('Data Mall Sudah Ditambahkan');
@@ -65,7 +71,6 @@ class MallController extends Controller
      */
     public function edit(Mall $mall)
     {
-
         return view('backend.mall.edit', compact('mall'));
     }
 
@@ -78,11 +83,17 @@ class MallController extends Controller
      */
     public function update(Request $request, Mall $mall)
     {
+        $path = '';
+        if ($request->hasFile('image')) {
+            $path = $request->image->store('malls', 'uploads');
+            $mall->image = $path;
+        }
         $mall->title = $request->title;
         $mall->description = $request->description;
+        $mall->city = $request->city;
         $mall->save();
 
-        return redirect('backend/mall')->withMessage('Data Kategori Sudah Terupdate');
+        return redirect('backend/mall')->withMessage('Data Mall ' . $mall->title . ' Sudah Terupdate');
     }
 
     /**
