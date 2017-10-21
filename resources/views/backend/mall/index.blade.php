@@ -17,7 +17,7 @@
 	<table class="table table-bordered table-striped table-hover" data-toggle="dataTable" data-form="deleteForm">
 		<thead>
 			<tr>
-				<th class="col-md-2">Image</th>
+				<th>Image</th>
 				<th>Data</th>
 				<th>Action</th>
 			</tr>
@@ -25,15 +25,15 @@
 		<tbody>
 			@foreach($malls as $mall)
 			<tr id="row-{{$mall->id}}">
-				<td>
-					<img src="{{$mall->image}}" class="img-responsive" alt="Image">
+				<td class="">
+					<img src="{{asset('uploads/'.$mall->image)}}" class="img-responsive" style="max-width:64px;" alt="Image">
 				</td>
 				<td>
 					<strong>{{$mall->title}}</strong>
 					<p>{{$mall->description}}</p>
 				</td>
-				<td class="col-md-4">
-					 <a href="{{ route('mall.edit', $mall->id) }}" class="btn btn-info btn-xs">view</a>
+				<td>
+
 					 <a href="{{ route('mall.edit', $mall->id) }}" class="btn btn-info btn-xs">edit</a>
 					 <a href="{{ route('mall.destroy',$mall->id) }}" class="btn btn-xs btn-danger delete">delete</a>
 
