@@ -18,6 +18,8 @@ Route::get('/category/{slug}', 'PageController@category')->name('category');
 Route::get('/category', 'PageController@categories')->name('categories');
 Route::get('/promo/{slug}', 'PageController@detail')->name('promo');
 
+Route::post('/ifttt/twitter', 'IfttController@twitter');
+
 Route::get('/ig', 'InstagramController@redirectToProvider');
 Route::get('/ig/callback', 'InstagramController@handleProviderCallback');
 Route::get('/ig/hashtag', 'InstagramController@hashtag');
@@ -27,4 +29,8 @@ Route::namespace ('Backend')->prefix('backend')->group(function () {
     Route::resource('raw', 'RawController');
     Route::resource('post', 'PostController');
     Route::resource('mall', 'MallController');
+
+    Route::get('twitter', 'TwitterController@index')->name('twitter.fetch');
+    Route::get('twitter/connect', 'TwitterController@redirectToProvider');
+    Route::get('twitter/cb', 'TwitterController@handleProviderCallback');
 });

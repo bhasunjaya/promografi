@@ -2,6 +2,7 @@
 
 {!! $raws->links() !!}
 <button type="button" class="btn btn-default">Fetch From Instagram Like</button>
+<a href="{{route('twitter.fetch')}}" class="btn btn-default">Twitter</a>
 <hr>
 <table class="table table-hover">
 
