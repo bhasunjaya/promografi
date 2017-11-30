@@ -20,12 +20,14 @@ class DatabaseSeeder extends Seeder
         //disable foreign key check for this connection before running seeders
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
+        DB::table('users')->truncate();
         DB::table('malls')->truncate();
         DB::table('categories')->truncate();
         DB::table('mall_post')->truncate();
         DB::table('posts')->truncate();
         DB::table('raws')->truncate();
 
+        $this->users();
         $this->malls();
         $this->categories();
         $this->raws();

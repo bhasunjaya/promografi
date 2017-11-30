@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Raw;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+
+    public function dummy(Request $request)
+    {
+        $raws = Raw::latest()->paginate(4);
+        // return $raws;
+        return view('page.dummy', compact('raws'));
+    }
+
     public function index(Request $request)
     {
         $featured = Post::with('category', 'malls')

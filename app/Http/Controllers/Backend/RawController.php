@@ -15,7 +15,7 @@ class RawController extends Controller
      */
     public function index()
     {
-        $raws = Raw::paginate(20);
+        $raws = Raw::latest()->paginate(20);
         return view('backend.raw.index', compact('raws'));
     }
 
