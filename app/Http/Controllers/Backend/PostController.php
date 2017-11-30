@@ -76,6 +76,7 @@ class PostController extends Controller
             // update raw menjadi sudah terproses
             $raw->is_exported = true;
             $raw->save();
+            $post->source = $raw->source;
         }
 
         $post->save();

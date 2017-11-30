@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Raw;
 use Cache;
+use DB;
+use Illuminate\Http\Request;
 use Socialite;
 
 class InstagramController extends Controller
@@ -33,20 +34,28 @@ class InstagramController extends Controller
 
     public function hashtag()
     {
-        dd(session('ig_user_token'));
-        $response = Cache::remember('liked', 60, function () {
+        $igdata = Cache::remember(session('ig_user_token'), 24 * 60, function () {
             return json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/liked?access_token=' . session('ig_user_token')));
+
         });
-        $insert = [];
-        foreach ($response->data as $r) {
-            Raw::firstOrCreate(['unique_id' => $r->id], [
-                'tipe' => 'ig',
-                'image' => $r->images->standard_resolution->url,
-                'author' => $r->user->username,
-                'content' => $r->caption->text,
-                'source' => $r->link,
+        // return response()->json($igdata);
+        return view('instagram.hashtag', compact('igdata'));
+    }
+
+    public function post(Request $request)
+    {
+        $ada = DB::table('raws')->where('unique_id', $request->unique_id)->get();
+        if (!$ada) {
+
+            DB::table('raws')->insert([
+                'unique_id' => $request->unique_id,
+                'image' => $request->image,
+                'content' => $request->content,
+                'author' => $request->author,
+                'source' => $request->source,
             ]);
+
         }
-        return response()->json($insert);
+        return redirect('ig/hashtag')->withNotification('promo created');
     }
 }
