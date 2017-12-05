@@ -11,7 +11,7 @@
 |
  */
 
-Route::get('/', 'PageController@dummy')->name('home');
+Route::get('/', 'PageController@index')->name('home');
 Route::get('/terms', 'PageController@terms')->name('terms');
 Route::get('/mall/{slug}', 'PageController@mall')->name('mall');
 Route::get('/category/{slug}', 'PageController@category')->name('category');

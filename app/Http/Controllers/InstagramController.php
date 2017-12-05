@@ -34,6 +34,10 @@ class InstagramController extends Controller
 
     public function hashtag()
     {
+        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . session('ig_user_token')));
+
+        return response()->json($medias);
+
         $igdata = Cache::remember(session('ig_user_token'), 24 * 60, function () {
             return json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/liked?access_token=' . session('ig_user_token')));
 
@@ -44,7 +48,7 @@ class InstagramController extends Controller
 
     public function post(Request $request)
     {
-        $ada = DB::table('raws')->where('unique_id', $request->unique_id)->get();
+        $ada = DB::table('raws')->where('unique_id', $request->unique_id)->get()->count();
         if (!$ada) {
 
             DB::table('raws')->insert([
