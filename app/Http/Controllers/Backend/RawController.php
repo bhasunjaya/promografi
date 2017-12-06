@@ -27,20 +27,18 @@ class RawController extends Controller
     public function create()
     {
 
-        $response = Cache::remember('liked', 60, function () {
-            return json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/liked?access_token=' . env('INSTAGRAM_TOKEN')));
-        });
-        $insert = [];
-        foreach ($response->data as $r) {
-            Raw::firstOrCreate(['unique_id' => $r->id], [
-                'tipe' => 'ig',
+        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . env('INSTAGRAM_TOKEN')));
+        // dd($medias->data);
+        foreach ($medias->data as $r) {
+            $raw = Raw::firstOrCreate(['unique_id' => $r->id], [
                 'image' => $r->images->standard_resolution->url,
+                'content' => object_get($r, 'caption.text', '-'),
                 'author' => $r->user->username,
-                'content' => $r->caption->text,
                 'source' => $r->link,
             ]);
+
         }
-        return response()->json($insert);
+        return redirect('backend/raw');
     }
 
     /**
