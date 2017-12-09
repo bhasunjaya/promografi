@@ -7,12 +7,12 @@
 				<span class="tag">{{showTimeLeft($post)}} hari lagi</span>
 			</h3>
 			<a href="single-listing-1.html" class="image-wrapper background-image">
-				<img src="{{asset('images/dummy.jpg')}}" alt="">
+				<img src="{{$post->image}}" alt="">
 			</a>
 		</div>
 		<!--end image-->
 		<h4 class="location">{!! showCity($post)!!}</h4>
-		<div class="price">{!! showPrice($post) !!}</div>
+		{{-- <div class="price">{!! showPrice($post) !!}</div> --}}
 		<div class="description">
 			<p>{{$post->excerpt}}</p>
 		</div>

@@ -31,11 +31,15 @@
 							<?php echo Form::select('category_id', $categories, null, ['class' => 'form-control']); ?>
 						</div>
 					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-						<?php echo Form::bsText('start_at', date('Y-m-d')); ?>
-					</div>
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-						<?php echo Form::bsText('end_at', date('Y-m-d')); ?>
+					<div class="col-xs-8">
+						<div class="form-group">
+							<label for="category_id" class="control-label">Periode</label>
+							<div class="input-daterange input-group" id="datepicker">
+								<input type="text" class="input-sm form-control" name="start_at" value="{{old('start_at',$post->start_at)}}" />
+								<span class="input-group-addon">to</span>
+								<input type="text" class="input-sm form-control" name="end_at" value="{{old('end_at',$post->end_at)}}" />
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -66,9 +70,18 @@
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label>
+						{{Form::checkbox('is_publish', 1, old('is_publish',$post->is_publish)) }} Publish
+							</label>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<div class="panel-footer">
-
 				<button type="submit" class="btn btn-primary">Submit</button>
 			</div>
 		</div>
@@ -92,4 +105,14 @@
 	</div>
 	@endif
 	<!-- -->
-	@endsection
+	@endsection @push('scripts')
+	<script type="text/javascript" src="{{asset('js/datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+	<script type="text/javascript">
+	$(function() {
+		$('.input-daterange').datepicker({
+			format: 'yyyy-mm-dd'
+		});
+	})
+	</script>
+	@endpush @push('css')
+	<link rel="stylesheet" type="text/css" href="{{asset('js/datepicker/css/bootstrap-datepicker.min.css')}}"> @endpush

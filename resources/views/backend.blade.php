@@ -17,6 +17,8 @@
 	<link href="{{asset('css/select2.min.css')}}" rel="stylesheet">
 	<link href="{{asset('css/backend.css')}}" rel="stylesheet">
 
+    @stack('css')
+
 </head>
 
 <body>
@@ -99,6 +101,8 @@
 	<script src="{{asset('js/toastr.min.js')}}"></script>
 	<script src="{{asset('js/select2.min.js')}}"></script>
 	<script src="{{asset('js/backend.js')}}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>

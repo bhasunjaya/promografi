@@ -25,7 +25,7 @@ Route::get('/ig/callback', 'InstagramController@handleProviderCallback');
 Route::get('/ig/hashtag', 'InstagramController@hashtag');
 Route::post('/ig/post', 'InstagramController@post');
 
-Route::namespace ('Backend')->prefix('backend')->group(function () {
+Route::namespace ('Backend')->middleware('auth')->prefix('backend')->group(function () {
     Route::resource('category', 'CategoryController');
     Route::resource('raw', 'RawController');
     Route::resource('post', 'PostController');

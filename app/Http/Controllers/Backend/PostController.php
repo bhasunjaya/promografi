@@ -62,6 +62,7 @@ class PostController extends Controller
         $post->content = $request->content;
         $post->start_at = $request->start_at;
         $post->end_at = $request->end_at;
+        $post->is_publish = $request->get('is_publish', 0);
 
         if ($request->hasFile('image')) {
             $fname = str_slug($post->title . ' ' . $request->image->getClientOriginalName());
@@ -128,13 +129,14 @@ class PostController extends Controller
             'start_at' => 'required',
             'end_at' => 'required',
         ]);
-
+        // return $request->all();
         $post->title = $request->title;
         $post->excerpt = $request->excerpt;
         $post->category_id = $request->category_id;
         $post->content = $request->content;
         $post->start_at = $request->start_at;
         $post->end_at = $request->end_at;
+        $post->is_publish = $request->get('is_publish', 0);
 
         if ($request->hasFile('image')) {
             $fname = str_slug($post->title . ' ' . $request->image->getClientOriginalName());
