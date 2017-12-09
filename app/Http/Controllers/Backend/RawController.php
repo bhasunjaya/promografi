@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Raw;
+use Goutte\Client;
 use Illuminate\Http\Request;
 
 class RawController extends Controller
@@ -15,6 +16,23 @@ class RawController extends Controller
      */
     public function index()
     {
+
+        // return date('Y-m-d H:i:s', 1512728407);
+
+        $client = new Client();
+        // $crawler = $client->request('GET', 'https://www.instagram.com/supermalkarawaci/');
+        // $scripts = $crawler->filter('script');
+        // $htmls = [];
+        // foreach ($scripts as $s) {
+        //     $htmls[] = $s->ownerDocument->saveHTML($s);
+        // }
+
+        // $text = $htmls[2];
+        // $text = str_replace('<script type="text/javascript">window._sharedData = ', '', $text);
+        // $text = str_replace(';</script>', '', $text);
+        // $json = json_decode($text);
+        // return response()->json($json);
+
         $raws = Raw::latest()->paginate(20);
         return view('backend.raw.index', compact('raws'));
     }

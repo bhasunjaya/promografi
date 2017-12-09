@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\Raw;
+use App\Models\Source;
+use Goutte\Client;
 use Illuminate\Console\Command;
 
 class FetchInstagram extends Command
@@ -31,12 +33,20 @@ class FetchInstagram extends Command
         parent::__construct();
     }
 
+    public function handle()
+    {
+        $src = Source::all();
+        foreach ($src as $r) {
+            $this->scrapper($r);
+        }
+    }
+
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function handle()
+    public function getPost()
     {
         $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . env('INSTAGRAM_TOKEN')));
 
@@ -51,5 +61,50 @@ class FetchInstagram extends Command
             print_R($raw->toArray());
         }
         $this->info("ftch Instagram!");
+    }
+
+    public function listFollower()
+    {
+        $followings = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/follows?access_token=' . env('INSTAGRAM_TOKEN')));
+        print_r($followings);
+    }
+
+    public function scrapper($r)
+    {
+
+        $client = new Client();
+        $crawler = $client->request('GET', $r->url);
+        $scripts = $crawler->filter('script');
+        $htmls = [];
+        foreach ($scripts as $s) {
+            $htmls[] = $s->ownerDocument->saveHTML($s);
+        }
+
+        $text = $htmls[2];
+        $text = str_replace('<script type="text/javascript">window._sharedData = ', '', $text);
+        $text = str_replace(';</script>', '', $text);
+        $json = json_decode($text);
+
+        $obj = object_get($json, 'entry_data.ProfilePage', false);
+        $data = [];
+        if ($obj) {
+            $nodes = $obj[0]->user->media->nodes;
+
+            foreach ($nodes as $node) {
+                $ig = [];
+                if (!$node->is_video) {
+                    $ig['id'] = $node->id;
+                    $ig['tipe'] = 'ig';
+                    $ig['image'] = $node->thumbnail_src;
+                    $ig['content'] = object_get($node, 'caption', '');
+                    $ig['source'] = $r->url;
+                    $ig['author'] = $r->title;
+                    $ig['created_at'] = date('Y-m-d H:i:s', $node->date);
+                    $ig['updated_at'] = date('Y-m-d H:i:s', $node->date);
+                    $raw = Raw::firstOrCreate(['unique_id' => $node->id], $ig);
+                }
+            }
+
+        }
     }
 }

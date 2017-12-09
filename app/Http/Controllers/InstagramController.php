@@ -17,7 +17,7 @@ class InstagramController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('instagram')->scopes(['public_content'])->redirect();
+        return Socialite::driver('instagram')->scopes(['public_content', 'follower_list'])->redirect();
     }
 
     /**
