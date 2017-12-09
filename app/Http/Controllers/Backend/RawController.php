@@ -33,7 +33,9 @@ class RawController extends Controller
         // $json = json_decode($text);
         // return response()->json($json);
 
-        $raws = Raw::latest()->paginate(20);
+        $raws = Raw::latest()
+            ->where('is_read', 0)
+            ->paginate(20);
         return view('backend.raw.index', compact('raws'));
     }
 
@@ -76,9 +78,11 @@ class RawController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Raw $raw)
     {
-        //
+        $raw->is_read = 1;
+        $raw->save();
+        return $raw;
     }
 
     /**

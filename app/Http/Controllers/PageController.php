@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Mall;
 use App\Models\Post;
 use App\Models\Raw;
 use Illuminate\Http\Request;
@@ -19,43 +20,52 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
-        $featured = Post::with('category', 'malls')
-            ->publish()
-            ->latest()
-            ->featured()
-            ->take(3)
-            ->get();
-
+        $malls = Mall::latest()->get();
+        // return $malls;
         $recent = Post::with('category', 'malls')
             ->publish()
             ->latest()
             ->take(12)
             ->get();
         // return $featured;
-        return view('page.index', compact('featured', 'recent'));
+        return view('page.index', compact('malls', 'recent'));
     }
 
     public function category($slug)
     {
         $category = Category::whereSlug($slug)->firstOrFail();
-
         $posts = Post::with('category', 'malls')
             ->publish()
             ->latest()
             ->whereCategoryId($category->id)
-            ->get();
+            ->paginate(12);
         return view('page.category', compact('category', 'posts'));
     }
 
     public function categories()
     {
         $categories = Category::all();
+        // return $categories;
         return view('page.categories', compact('categories'));
     }
 
-    public function mall()
+    public function malls()
     {
-        return view('page.mall');
+        $malls = Mall::latest()->get();
+        return view('page.malls', compact('malls'));
+
+    }
+    public function mall($slug)
+    {
+        $mall = Mall::whereSlug($slug)->firstOrFail();
+        $posts = $mall->posts()
+            ->with('category', 'malls')
+            ->publish()
+            ->latest()
+            ->paginate(12);
+
+        // return $posts;
+        return view('page.mall', compact('mall', 'posts'));
     }
 
     public function detail($slug)

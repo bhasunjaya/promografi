@@ -1,124 +1,54 @@
 @extends('frontend')
 <!-- -->
-@section('breadcrumbs')
-<ol class="breadcrumb">
-	<li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-	<li class="breadcrumb-item"><a href="{{route('categories')}}">Kategori</a></li>
-	<li class="breadcrumb-item"><a href="{{route('category',$post->category->slug)}}">{{$post->category->title}}</a></li>
-	<li class="breadcrumb-item active">{{$post->title}}</li>
-</ol>
-@endsection
-
-<!-- -->
-@section('page-title')
-<!--============ Page Title =========================================================================-->
-<div class="page-title">
-	<div class="container clearfix">
-		<div class="float-left float-xs-none">
-			<h1>{{$post->title}}</h1>
-			<h4 class="location">
-				@foreach($post->malls as $mall)
-				<a href="{{route('mall',$mall->slug)}}">{{$mall->title}}</a>
-				@endforeach
-			</h4>
-		</div>
-		<div class="float-right float-xs-none price">
-			<div class="number">Sisa</div>
-			<div class="id opacity-50">
-				<strong>{{showTimeLeft($post)}} hari lagi</strong>
-			</div>
-		</div>
-	</div>
-	<!--end container-->
-</div>
-@endsection
 
 <!-- -->
 @section('content')
-<section class="content">
-	<section class="block">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
+<div class="product-details segments-page">
 
-					<article class="blog-post clearfix">
-						<img src="{{asset($post->image)}}" alt="" class="img-responsive">
-						<div class="blog-post-content">
-							<h2>Deskripsi</h2>
-							<p>{{$post->content}}</p>
-							<p>source: <a href="https://instagram.com/p/6R94NOnk31/"><i class="fa fa-instagram"></i> bhasunjaya</a></p>
-							<hr>
-							<div class="de">
-								<h2>Lokasi</h2>
-								<dl>
-									@foreach($post->malls as $mall)
-									<dt><a href="{{route('mall',$mall->slug)}}">{{$mall->title}}</a></dt>
-									<dd>KOTA</dd>
-									@endforeach
-								</dl>
-							</div>
-						</div>
-						<!--end blog-post-content-->
-					</article>
+	<div class="ui container">
 
-					<!--end Article-->
+		<div class="ui breadcrumb">
+			<a href="{{url('/')}}" class="section">Home</a>
+			<i class="right angle icon divider"></i>
+			<a  href="{{url('/category/'.$post->category->slug)}}" class="section">{{$post->category->title}}</a>
+			<i class="right angle icon divider"></i>
+			<div class="active section">{{$post->title}}</div>
+		</div>
 
+		<div class="ui stackable grid">
+			<div class="ten wide column">
+				<img class="ui centered  image" src="{{asset($post->image)}}" alt="{{$post->title}}">
+			</div>
+			<div class="six wide column">
+				<h1>{{$post->title}}</h1>
 
-					<!--Description-->
-
-					<!--end Description-->
-
-
-
+				<div class="desc-short">
+					<p class="title2">{{$post->excerpt}}</p>
+					<span class="ui red tag label">{{showTimeLeft($post)}}</span> {{--
+					<p>{{$post}}</p> --}} {{--
+					<button class="button"><i class="fa fa-shopping-cart"></i>Add to cart</button> --}}
 				</div>
-
-				<div class="col-md-4">
-					<aside class="sidebar">
-						<section>
-							<h2>Similar Ads</h2>
-							<div class="items compact">
-								<div class="item">
-									<div class="ribbon-featured">Featured</div>
-									<!--end ribbon-->
-									<div class="wrapper">
-										<div class="image">
-											<h3>
-                                                        <a href="#" class="tag category">Home & Decor</a>
-                                                        <a href="single-listing-1.html" class="title">Furniture for sale</a>
-                                                        <span class="tag">Offer</span>
-                                                    </h3>
-											<a href="single-listing-1.html" class="image-wrapper background-image">
-                                                        <img src="assets/img/image-01.jpg" alt="">
-                                                    </a>
-										</div>
-										<!--end image-->
-										<h4 class="location">
-                                                    <a href="#">Manhattan, NY</a>
-                                                </h4>
-										<div class="price">$80</div>
-										<div class="meta">
-											<figure>
-												<i class="fa fa-calendar-o"></i>02.05.2017
-											</figure>
-											<figure>
-												<a href="#">
-                                                            <i class="fa fa-user"></i>Jane Doe
-                                                        </a>
-											</figure>
-										</div>
-										<!--end meta-->
-									</div>
-									<!--end wrapper-->
-								</div>
-								<!--end item-->
+				<div class="desc-long">
+					<h5>Lokasi</h5>
+					<div class="ui horizontal list">
+						@foreach($post->malls as $mall) {{--
+						<div class="item"> --}}
+							<a href="{{route('mall',$mall->slug)}}" class="item">
+							<img class="ui avatar image" src="{{asset('uploads/'.$mall->image)}}" alt="gambar {{$mall->title}} {{$mall->city}} ">
+							<div class="content">
+								<div class="header">{{$mall->title}}</div> {{$mall->city}}
 							</div>
-						</section>
-					</aside>
-
+							</a> {{-- </div> --}} @endforeach
+					</div>
 				</div>
 			</div>
 		</div>
+		<div class="desc-long">
+			<h5>Deskripsi</h5>
+			<p>{!! nl2br($post->content) !!}</p>
+		</div>
 
-	</section>
-</section>
+	</div>
+</div>
+<!-- end product details -->
 @endsection

@@ -26,8 +26,13 @@ function showTimeLeft($post)
     $end = explode('-', $post->end_at);
     $dtstart = Carbon::createFromDate($start[0], $start[1], $start[2]);
     $dtend = Carbon::createFromDate($end[0], $end[1], $end[2]);
-
-    return $dtstart->diffInDays($dtend);
+    $sisa = $dtstart->diffInDays($dtend);
+    if ($sisa < 0) {
+        return ' penawaran telah berakhir';
+    } else {
+        return $sisa . ' hari lagi';
+    }
+    // return $dtstart->diffInDays($dtend);
 }
 
 function showPrice($post)
