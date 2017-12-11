@@ -5,7 +5,7 @@
 		<div class="profile-banner">
 			<img src="{{asset('uploads/'.$mall->image)}}" alt="{{$mall->title}} {{$mall->city}} ">
 			<h1>{{$mall->title}}</h1>
-			<p>{{$mall->city}}</p>
+			<h3>{{$mall->city}}</h3>
 		</div>
 		<div class="ui one item menu">
 			<a href="#" class="item" data-tab="product">Promo</a>
@@ -18,7 +18,7 @@
 					<div class="content">
 						<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt=""></a>
 						<a href="{{url('promo/'.$post->slug)}}">
-							<p>{{$post->title}}</p>
+							<h2>{{$post->title}}</h2>
 						</a>
 						<h5>{{showTimeLeft($post)}}</h5>
 					</div>

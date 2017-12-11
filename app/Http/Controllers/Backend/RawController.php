@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Raw;
-use Goutte\Client;
 use Illuminate\Http\Request;
 
 class RawController extends Controller
@@ -16,23 +15,6 @@ class RawController extends Controller
      */
     public function index()
     {
-
-        // return date('Y-m-d H:i:s', 1512728407);
-
-        $client = new Client();
-        // $crawler = $client->request('GET', 'https://www.instagram.com/supermalkarawaci/');
-        // $scripts = $crawler->filter('script');
-        // $htmls = [];
-        // foreach ($scripts as $s) {
-        //     $htmls[] = $s->ownerDocument->saveHTML($s);
-        // }
-
-        // $text = $htmls[2];
-        // $text = str_replace('<script type="text/javascript">window._sharedData = ', '', $text);
-        // $text = str_replace(';</script>', '', $text);
-        // $json = json_decode($text);
-        // return response()->json($json);
-
         $raws = Raw::latest()
             ->where('is_read', 0)
             ->paginate(20);
@@ -47,8 +29,8 @@ class RawController extends Controller
     public function create()
     {
 
-        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . env('INSTAGRAM_TOKEN')));
-        // dd($medias->data);
+        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?count=50&access_token=' . env('INSTAGRAM_TOKEN')));
+
         foreach ($medias->data as $r) {
             $raw = Raw::firstOrCreate(['unique_id' => $r->id], [
                 'image' => $r->images->standard_resolution->url,

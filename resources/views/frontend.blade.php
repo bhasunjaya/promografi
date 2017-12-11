@@ -14,9 +14,9 @@
 
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <title>@yield('page_title','Promo Diskon Terbaru Di Seluruh Mall Jakarta') - Promografi.id</title>
+    <title>@yield('page_title','Promo, Diskon dan Info Sale Seluruh Mall di Jakarta') - Promografi.id</title>
     <meta name="keywords" content="@yield('page_keywords','promo,promosi,discount,diskon,jakarta,mall')">
-    <meta name="description" content="@yield('page_description','Promografi adalah sebuah info promosi, promo dan discount terlengkap untuk seluruh mall di jakarta')">
+    <meta name="description" content="@yield('page_description','Temukan info promo, diskon, sale dan potongan harga paling murah untuk setiap mall dan pusat belanja di jakarta. ')">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110999096-1"></script>

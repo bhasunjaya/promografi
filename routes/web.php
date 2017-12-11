@@ -17,6 +17,9 @@ Route::paginate('/mall/{slug}', 'PageController@mall')->name('mall');
 Route::get('/mall', 'PageController@malls')->name('malls');
 Route::paginate('/category/{slug}', 'PageController@category')->name('category');
 Route::get('/category', 'PageController@categories')->name('categories');
+Route::paginate('/hot-promo', 'PageController@hotpromo')->name('hotpromo');
+
+Route::paginate('/promo', 'PageController@promolist')->name('promolist');
 Route::get('/promo/{slug}', 'PageController@detail')->name('promo');
 
 Route::post('/ifttt/twitter', 'IfttController@twitter');

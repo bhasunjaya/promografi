@@ -5,30 +5,55 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Mall;
 use App\Models\Post;
-use App\Models\Raw;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-
-    public function dummy(Request $request)
-    {
-        $raws = Raw::latest()->paginate(4);
-        // return $raws;
-        return view('page.dummy', compact('raws'));
-    }
-
     public function index(Request $request)
     {
         $malls = Mall::latest()->get();
-        // return $malls;
+
+        $missit = Post::with('category', 'malls')
+            ->publish()
+            ->whereRaw('end_at >= now()')
+            ->orderBy('end_at', 'ASC')
+            ->paginate(4);
+        $featured = Post::with('category', 'malls')
+            ->publish()
+            ->take(4)
+            ->where('is_featured', 1)
+            ->latest()
+            ->get();
+
         $recent = Post::with('category', 'malls')
             ->publish()
             ->latest()
             ->take(8)
             ->get();
         // return $featured;
-        return view('page.index', compact('malls', 'recent'));
+        return view('page.index', compact('malls', 'recent', 'featured', 'missit'));
+    }
+
+    public function promolist()
+    {
+        $posts = Post::with('category', 'malls')
+            ->publish()
+            ->latest()
+            ->paginate(12);
+        return view('page.promolist', compact('posts'));
+    }
+    public function hotpromo()
+    {
+        \DB::connection()->enableQueryLog();
+        $posts = Post::with('category', 'malls')
+            ->publish()
+            ->whereRaw('end_at >= now()')
+            ->orderBy('end_at', 'ASC')
+        // ->latest()
+            ->paginate(12);
+        $queries = \DB::getQueryLog();
+        // return $queries;
+        return view('page.hotpromo', compact('posts'));
     }
 
     public function category($slug)
