@@ -13,10 +13,13 @@
 
 Route::get('/', 'PageController@index')->name('home');
 Route::get('/terms', 'PageController@terms')->name('terms');
-Route::get('/mall/{slug}', 'PageController@mall')->name('mall');
+Route::paginate('/mall/{slug}', 'PageController@mall')->name('mall');
 Route::get('/mall', 'PageController@malls')->name('malls');
-Route::get('/category/{slug}', 'PageController@category')->name('category');
+Route::paginate('/category/{slug}', 'PageController@category')->name('category');
 Route::get('/category', 'PageController@categories')->name('categories');
+Route::paginate('/hot-promo', 'PageController@hotpromo')->name('hotpromo');
+
+Route::paginate('/promo', 'PageController@promolist')->name('promolist');
 Route::get('/promo/{slug}', 'PageController@detail')->name('promo');
 
 Route::post('/ifttt/twitter', 'IfttController@twitter');
@@ -34,9 +37,11 @@ Route::namespace ('Backend')->middleware('auth')->prefix('backend')->group(funct
 
     Route::get('dashboard', 'DashboardController')->name('dashboard')->middleware('auth');;
 
-    Route::get('twitter', 'TwitterController@index')->name('twitter.fetch');
-    Route::get('twitter/connect', 'TwitterController@redirectToProvider');
-    Route::get('twitter/cb', 'TwitterController@handleProviderCallback');
+    // Route::get('twitter', 'TwitterController@index')->name('twitter.fetch');
+    // Route::get('twitter/connect', 'TwitterController@redirectToProvider');
+    // Route::get('twitter/cb', 'TwitterController@handleProviderCallback');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 });
 
 Auth::routes();

@@ -1,8 +1,58 @@
 @extends('frontend') @section('content')
 
 
-<!-- product -->
 <section class="product segments-page divider">
+	<div class="ui container">
+		<div class="section-title">
+			<h3>Promo Pilihan</h3>
+			<div class="line"></div>
+		</div>
+		<div class="ui stackable grid">
+			@foreach($featured as $post)
+			<div class="four wide column pr">
+				<div class="content">
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
+					<a href="{{url('promo/'.$post->slug)}}">
+						<h2>{{$post->title}}</h2>
+					</a>
+					<h5>{{showTimeLeft($post)}}</h5>
+				</div>
+			</div>
+			@endforeach
+
+		</div>
+	</div>
+</section>
+<!-- product -->
+<section class="product segments divider">
+	<div class="ui container">
+		<div class="section-title">
+			<h3>Don't Miss it!</h3>
+			<div class="line"></div>
+		</div>
+		<div class="ui stackable grid">
+			@foreach($missit as $post)
+			<div class="four wide column pr">
+				<div class="content">
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
+					<a href="{{url('promo/'.$post->slug)}}">
+						<h2>{{$post->title}}</h2>
+					</a>
+					<h5>{{showTimeLeft($post)}}</h5>
+				</div>
+			</div>
+			@endforeach
+			<div class="sixteen wide column full">
+				<div class="link">
+					<a href="{{url('promo')}}" class="link-color">Promo yang akan berakhir lainnya <i class="fa fa-angle-right"></i></a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- product -->
+<section class="product segments divider">
 	<div class="ui container">
 		<div class="section-title">
 			<h3>Promo Terbaru</h3>
@@ -12,16 +62,21 @@
 			@foreach($recent as $post)
 			<div class="four wide column pr">
 				<div class="content">
-					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt=""></a>
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
 					<a href="{{url('promo/'.$post->slug)}}">
-						<p>{{$post->title}}</p>
+						<h2>{{$post->title}}</h2>
 					</a>
 					<h5>{{showTimeLeft($post)}}</h5>
 				</div>
 			</div>
 			@endforeach
-
+			<div class="sixteen wide column full">
+				<div class="link">
+					<a href="{{url('promo')}}" class="link-color">Selengkapnya <i class="fa fa-angle-right"></i></a>
+				</div>
+			</div>
 		</div>
+
 	</div>
 </section>
 <!-- end product -->

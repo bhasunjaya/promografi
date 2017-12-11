@@ -73,9 +73,12 @@
 				<div class="row">
 					<div class="col-md-4">
 						<div class="checkbox">
-							<label>
-						{{Form::checkbox('is_publish', 1, old('is_publish',$post->is_publish)) }} Publish
-							</label>
+							<label>{{Form::checkbox('is_publish', 1, old('is_publish',$post->is_publish)) }} Publish</label>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label>{{Form::checkbox('is_featured', 1, old('is_featured',$post->is_featured)) }} Featured</label>
 						</div>
 					</div>
 				</div>

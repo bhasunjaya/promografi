@@ -36,7 +36,8 @@
 							<a href="{{route('mall',$mall->slug)}}" class="item">
 							<img class="ui avatar image" src="{{asset('uploads/'.$mall->image)}}" alt="gambar {{$mall->title}} {{$mall->city}} ">
 							<div class="content">
-								<div class="header">{{$mall->title}}</div> {{$mall->city}}
+								<h2 class="header">{{$mall->title}}</h2>
+								<h3>{{$mall->city}}</h3>
 							</div>
 							</a> {{-- </div> --}} @endforeach
 					</div>
@@ -52,3 +53,8 @@
 </div>
 <!-- end product details -->
 @endsection
+
+
+@section('page_title', $post->title)
+@section('page_keywords', 'promo,promosi,discount,diskon,jakarta,mall')
+@section('page_description', $post->excerpt)

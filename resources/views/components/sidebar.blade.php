@@ -8,6 +8,7 @@
         </div>
 
         <a href="{{url('/')}}" class="item"><i class="fa fa-home"></i>Home</a>
+        <a href="{{url('/hot-promo')}}" class="item"><i class="fa fa-list-alt"></i>Don't Miss It</a>
         <a href="{{url('/category')}}" class="item"><i class="fa fa-list-alt"></i>Kategori</a>
         <a href="{{url('/mall')}}" class="item"><i class="fa fa-list-alt"></i>Mall</a>
         {{-- <div class="ui styled accordion">

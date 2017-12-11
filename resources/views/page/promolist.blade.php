@@ -2,13 +2,12 @@
 
 
 <!-- product -->
-<section class="product  segments-page divider">
+<section class="product segments-page divider">
 	<div class="ui container">
-
 
 		<div class="section">
 			<div class="section-title">
-				<h1><a href="{{route('category',$category->slug)}}">{{$category->title}}</a></h1>
+				<h1>Promo Terbaru</h1>
 				<div class="line"></div>
 			</div>
 			<div class="ui stackable grid">
@@ -17,7 +16,7 @@
 					<div class="content">
 						<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt=""></a>
 						<a href="{{url('promo/'.$post->slug)}}">
-						<h2>{{$post->title}}</h2>
+							<h2>{{$post->title}}</h2>
 						</a>
 						<h5>{{showTimeLeft($post)}}</h5>
 					</div>
@@ -39,16 +38,4 @@
 	</div>
 </section>
 
-@endsection @section('content2')
-
-<section class="block">
-	<div class="container">
-		<div class="items list grid-xl-4-items grid-lg-3-items grid-md-2-items">
-
-			@foreach($posts as $post) @include('include.item') @endforeach
-		</div>
-
-
-	</div>
-</section>
 @endsection

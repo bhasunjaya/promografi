@@ -24,7 +24,7 @@ function showTimeLeft($post)
 {
     $start = explode('-', $post->start_at);
     $end = explode('-', $post->end_at);
-    $dtstart = Carbon::createFromDate($start[0], $start[1], $start[2]);
+    $dtstart = Carbon::now();
     $dtend = Carbon::createFromDate($end[0], $end[1], $end[2]);
     $sisa = $dtstart->diffInDays($dtend);
     if ($sisa < 0) {

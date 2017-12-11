@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "08e5e7392b7cb6aa08995cd033c34ccc",
+    "content-hash": "abfc5d8181d21fb90130f8d2cdffb3fb",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1858,6 +1858,61 @@
             "time": "2017-09-22T20:46:04+00:00"
         },
         {
+            "name": "rap2hpoutre/laravel-log-viewer",
+            "version": "v0.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/laravel-log-viewer.git",
+                "reference": "2a557969a8a23d6b5320f1716748d9577f27f303"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/2a557969a8a23d6b5320f1716748d9577f27f303",
+                "reference": "2a557969a8a23d6b5320f1716748d9577f27f303",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.2.*|5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/controllers"
+                ],
+                "psr-0": {
+                    "Rap2hpoutre\\LaravelLogViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2hpoutre",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "description": "A Laravel log reader",
+            "keywords": [
+                "laravel",
+                "log",
+                "log-reader",
+                "log-viewer",
+                "logging",
+                "lumen"
+            ],
+            "time": "2017-11-17T10:21:53+00:00"
+        },
+        {
             "name": "socialiteproviders/instagram",
             "version": "v3.0.0",
             "source": {
@@ -1942,6 +1997,72 @@
             ],
             "description": "Easily add new or override built-in providers in Laravel Socialite.",
             "time": "2017-09-20T14:05:43+00:00"
+        },
+        {
+            "name": "spatie/laravel-paginateroute",
+            "version": "2.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-paginateroute.git",
+                "reference": "eaea2051a805c919dc89139bf27e331259a96f32"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-paginateroute/zipball/eaea2051a805c919dc89139bf27e331259a96f32",
+                "reference": "eaea2051a805c919dc89139bf27e331259a96f32",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "illuminate/contracts": "~5.4.0",
+                "illuminate/routing": "~5.4.0",
+                "illuminate/translation": "~5.4.0",
+                "orchestra/testbench": "^3.4",
+                "phpunit/phpunit": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\PaginateRoute\\PaginateRouteServiceProvider"
+                    ],
+                    "aliases": {
+                        "PaginateRoute": "Spatie\\PaginateRoute\\PaginateRouteFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\PaginateRoute\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastian De Deyne",
+                    "email": "sebastian@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel outer extension to easily use laravel's paginator without the query string",
+            "homepage": "https://github.com/spatie/laravel-paginateroute",
+            "keywords": [
+                "laravel",
+                "laravel-paginateroute",
+                "pagination",
+                "routing",
+                "spatie"
+            ],
+            "time": "2017-11-02T08:38:57+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
