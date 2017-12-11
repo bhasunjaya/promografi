@@ -34,9 +34,11 @@ Route::namespace ('Backend')->middleware('auth')->prefix('backend')->group(funct
 
     Route::get('dashboard', 'DashboardController')->name('dashboard')->middleware('auth');;
 
-    Route::get('twitter', 'TwitterController@index')->name('twitter.fetch');
-    Route::get('twitter/connect', 'TwitterController@redirectToProvider');
-    Route::get('twitter/cb', 'TwitterController@handleProviderCallback');
+    // Route::get('twitter', 'TwitterController@index')->name('twitter.fetch');
+    // Route::get('twitter/connect', 'TwitterController@redirectToProvider');
+    // Route::get('twitter/cb', 'TwitterController@handleProviderCallback');
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
 });
 
 Auth::routes();
