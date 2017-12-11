@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Raw;
 use Illuminate\Http\Request;
 use Log;
 
@@ -36,9 +37,17 @@ class InstagramController extends Controller
      */
     public function store(Request $request)
     {
-        Log::info(print_r($request->all(), 1));
-        $data = json_decode(file_get_contents('php://input'));
-        Log::info(print_r($data, 1));
+        $r = $request->all();
+
+        $raw = Raw::firstOrCreate(['unique_id' => $r['id']], [
+            'image' => $r['images__standard_resolution__url'],
+            'content' => $r['caption__text'],
+            'author' => $r['user__username'],
+            'source' => $r['link'],
+            'created_at' => date('Y-m-d H:i:s', $r['created_time']),
+            'updated_at' => date('Y-m-d H:i:s', $r['created_time']),
+        ]);
+        return $raw;
     }
 
     /**

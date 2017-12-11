@@ -35,6 +35,12 @@ class FetchInstagram extends Command
 
     public function handle()
     {
+
+        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/liked?access_token=' . env('INSTAGRAM_TOKEN')));
+        return $medias;
+
+        $this->scrapper2();
+
         $src = Source::all();
         foreach ($src as $r) {
             $this->scrapper($r);
@@ -49,6 +55,7 @@ class FetchInstagram extends Command
     public function getPost()
     {
         $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . env('INSTAGRAM_TOKEN')));
+        https: //api.instagram.com/v1/users/self/media/liked?access_token=ACCESS-TOKEN
 
         // dd($medias->data);
         foreach ($medias->data as $r) {
@@ -106,5 +113,49 @@ class FetchInstagram extends Command
             }
 
         }
+    }
+
+    public function scrapper2()
+    {
+
+        $client = new Client();
+        $crawler = $client->request('GET', 'https://www.instagram.com/barutauuu/saved/');
+        $scripts = $crawler->filter('script');
+        $htmls = [];
+        foreach ($scripts as $s) {
+            $htmls[] = $s->ownerDocument->saveHTML($s);
+        }
+
+        $text = $htmls[4];
+        $text = str_replace('<script type="text/javascript">window._sharedData = ', '', $text);
+        $text = str_replace(';</script>', '', $text);
+
+        $json = json_decode($text);
+        dd($json->entry_data);
+        $obj = object_get($json, 'entry_data.ProfilePage', false);
+        dd($obj);
+        $data = [];
+        if ($obj) {
+            $nodes = $obj[0]->user->media->nodes;
+
+            foreach ($nodes as $node) {
+                $ig = [];
+                if (!$node->is_video) {
+                    $ig['id'] = $node->id;
+                    $ig['tipe'] = 'ig';
+                    $ig['image'] = $node->thumbnail_src;
+                    $ig['content'] = object_get($node, 'caption', '');
+                    // $ig['source'] = $r->url;
+                    // $ig['author'] = $r->title;
+                    $ig['created_at'] = date('Y-m-d H:i:s', $node->date);
+                    $ig['updated_at'] = date('Y-m-d H:i:s', $node->date);
+                    $data[] = $ig;
+                    // $raw = Raw::firstOrCreate(['unique_id' => $node->id], $ig);
+                }
+            }
+
+        }
+
+        dd($data);
     }
 }

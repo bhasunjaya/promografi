@@ -28,13 +28,15 @@ class InstagramController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('instagram')->user();
+        // dd($user);
         session(['ig_user_token' => $user->token]);
         return redirect('/ig/hashtag');
     }
 
     public function hashtag()
     {
-        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . session('ig_user_token')));
+        $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/liked?access_token=' . session('ig_user_token')));
+        // $medias = json_decode(file_get_contents('https://api.instagram.com/v1/users/self/media/recent/?access_token=' . session('ig_user_token')));
 
         return response()->json($medias);
 
