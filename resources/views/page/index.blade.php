@@ -1,8 +1,13 @@
 @extends('frontend') @section('content')
 
+
+
+
 <!-- product -->
 <section class="product segments-page divider">
 	<div class="ui container">
+
+
 		<div class="section-title">
 			<h3>Promo Terbaru</h3>
 			<div class="line"></div>
@@ -48,3 +53,13 @@
 @section('page_title', 'Promo Diskon Terbaru Di Seluruh Mall Jakarta')
 @section('page_keywords', 'promo,promosi,discount,diskon,jakarta,mall')
 @section('page_description', 'Promografi adalah sebuah info promosi, promo dan discount terlengkap untuk seluruh mall di jakarta')
+
+
+{{-- @push('css')
+<link rel="stylesheet" type="text/css" href="{{asset('css/owl.carousel.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('css/owl.theme.default.min.css')}}">
+@endpush
+
+@push('scripts')
+	<script src="{{asset('js/owl.carousel.min.js')}}"></script>
+@endpush --}}

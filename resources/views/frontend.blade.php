@@ -9,6 +9,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    @stack('css')
+
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
     <title>@yield('page_title','Promo Diskon Terbaru Di Seluruh Mall Jakarta') - Promografi.id</title>
@@ -87,6 +90,9 @@
 
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/semantic.min.js')}}"></script>
+
+    @stack('scripts')
+
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 </body>

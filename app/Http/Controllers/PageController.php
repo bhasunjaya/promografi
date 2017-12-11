@@ -25,7 +25,7 @@ class PageController extends Controller
         $recent = Post::with('category', 'malls')
             ->publish()
             ->latest()
-            ->take(12)
+            ->take(8)
             ->get();
         // return $featured;
         return view('page.index', compact('malls', 'recent'));

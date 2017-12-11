@@ -24,7 +24,7 @@ $(function(){
 
 	// // slider
 	// $(".slider-show").owlCarousel({
-	// 	items: 1,
+	// 	items: 4,
 	// 	navigation: true,
 	// 	slideSpeed: 1000,
 	// 	dots: true,
