@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css"> --}}
+    <meta name="viewport" content="width=device-width, initial-scale=1"> {{--
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
-    <title>Promografi </title>
+    <title>@yield('page_title','Promo Diskon Terbaru Di Seluruh Mall Jakarta') - Promografi.id</title>
+    <meta name="keywords" content="@yield('page_keywords','promo,promosi,discount,diskon,jakarta,mall')">
+    <meta name="description" content="@yield('page_description','Promografi adalah sebuah info promosi, promo dan discount terlengkap untuk seluruh mall di jakarta')">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110999096-1"></script>
+    <script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'UA-110999096-1');</script>
+
 
 </head>
 
@@ -22,8 +28,7 @@
     <!-- preloader -->
     <div id="preloader"></div>
     <!-- end preloader -->
-        @include('components.sidebar')
-
+    @include('components.sidebar')
 
 
     <!-- wrap content -->
@@ -52,8 +57,8 @@
         </div>
         <!-- end navbar -->
         <div class="dalem">
-       @yield('content')
-   </div>
+            @yield('content')
+        </div>
 
         <!-- footer -->
         <footer class="footer">

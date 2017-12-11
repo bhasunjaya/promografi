@@ -52,3 +52,8 @@
 </div>
 <!-- end product details -->
 @endsection
+
+
+@section('page_title', $post->title)
+@section('page_keywords', 'promo,promosi,discount,diskon,jakarta,mall')
+@section('page_description', $post->excerpt)

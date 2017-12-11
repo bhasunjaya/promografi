@@ -26,12 +26,14 @@
 
 				<div class="sixteen wide column full">
 					<div class="link">
-						<a href="" class="link-color">See More <i class="fa fa-angle-right"></i></a>
+
+						@if(PaginateRoute::hasPreviousPage()) <a href="{{ PaginateRoute::previousPageUrl() }}" class="link-color" style="float:left"><i class="fa fa-angle-left"></i> Previous</a> @endif
+						<!-- -->
+						@if(PaginateRoute::hasNextPage($posts)) <a href="{{ PaginateRoute::nextPageUrl($posts) }}" class="link-color">Next <i class="fa fa-angle-right"></i></a> @endif
+						<!-- -->
+						{{-- <a href="" class="link-color">See More <i class="fa fa-angle-right"></i></a> --}}
 					</div>
 				</div>
-			</div>
-			<div class="pagination">
-				{{$posts->links()}}
 			</div>
 		</div>
 	</div>

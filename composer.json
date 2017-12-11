@@ -13,6 +13,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
         "socialiteproviders/instagram": "^3.0",
+        "spatie/laravel-paginateroute": "^2.6",
         "thujohn/twitter": "^2.2"
     },
     "require-dev": {

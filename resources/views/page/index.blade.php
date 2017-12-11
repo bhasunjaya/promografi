@@ -1,6 +1,5 @@
 @extends('frontend') @section('content')
 
-
 <!-- product -->
 <section class="product segments-page divider">
 	<div class="ui container">
@@ -44,3 +43,8 @@
 </section>
 
 @endsection
+
+
+@section('page_title', 'Promo Diskon Terbaru Di Seluruh Mall Jakarta')
+@section('page_keywords', 'promo,promosi,discount,diskon,jakarta,mall')
+@section('page_description', 'Promografi adalah sebuah info promosi, promo dan discount terlengkap untuk seluruh mall di jakarta')
