@@ -67,6 +67,13 @@
 					</label>
 				</div>
 			</div>
+			<div class="col-md-4">
+				<div class="checkbox">
+					<label>
+						{{Form::checkbox('is_featured', 1, old('is_featured',$post->is_featured)) }} Publish
+					</label>
+				</div>
+			</div>
 		</div>
 
 

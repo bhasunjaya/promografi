@@ -18,7 +18,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with('category')->latest()->paginate(25);
+        $posts = Post::with('category', 'malls')
+            ->orderBy('is_featured', 'DESC')
+            ->latest()
+            ->paginate(15);
+        // return $posts;
         return view('backend.post.index', compact('posts'));
     }
 
@@ -63,6 +67,7 @@ class PostController extends Controller
         $post->start_at = $request->start_at;
         $post->end_at = $request->end_at;
         $post->is_publish = $request->get('is_publish', 0);
+        $post->is_featured = $request->get('is_featured', 0);
 
         if ($request->hasFile('image')) {
             $fname = str_slug($post->title . ' ' . $request->image->getClientOriginalName());
@@ -137,6 +142,7 @@ class PostController extends Controller
         $post->start_at = $request->start_at;
         $post->end_at = $request->end_at;
         $post->is_publish = $request->get('is_publish', 0);
+        $post->is_featured = $request->get('is_featured', 0);
 
         if ($request->hasFile('image')) {
             $fname = str_slug($post->title . ' ' . $request->image->getClientOriginalName());

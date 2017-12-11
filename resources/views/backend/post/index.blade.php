@@ -12,24 +12,34 @@
 <table class="table table-bordered table-striped table-hover category-table" data-toggle="dataTable" data-form="deleteForm">
 	<thead>
 		<tr>
-			<th>Image</th>
-			<th>Category</th>
 			<th>Post</th>
-			<th>Date</th>
-			<th>Option</th>
+			<th class="col-md-1">Status</th>
+			<th class="col-md-1">Date</th>
+			<th class="col-md-2">Option</th>
 		</tr>
 	</thead>
 	<tbody>
 		@foreach($posts as $post)
 		<tr id="row-{{$post->id}}">
-			<td><a href="{{$post->image}}">view image</a></td>
-			<td><a href="#">{{$post->category->title}}</a></td>
 			<td>
-				<a href="#">{{$post->title}}</a>
+				@if($post->is_featured)
+				<span class="label label-danger">featured</span>
+				@endif
+				<a href="{{route('post.edit',$post->id)}}">{{$post->title}}</a>
 				<p class="small">{{$post->excerpt}}</p>
+				<p>
+					@foreach($post->malls as $m)
+					<a href="#" class="btn btn-xs btn-info">{{$m->title}}</a>
+					@endforeach
+				</p>
+				<p>
+					<a href="#">{{$post->category->title}}</a>
+				</p>
 			</td>
-			<td>{{$post->start_at}} - {{$post->end_at}}</td>
+			<td><p class="small">{{$post->is_publish ? 'yes': 'draft'}}</p></td>
+			<td><p class="small">{{$post->end_at}}</p></td>
 			<td>
+				<a href="{{$post->image}}"  class="btn btn-xs btn-info" target="_blank">img</a>
 				<a href="{{route('post.edit',$post->id)}}"  class="btn btn-xs btn-info">edit</a>
 				<a href="{{ route('post.destroy',$post->id) }}" class="btn btn-xs btn-danger delete">delete</a>
 			</td>
