@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-
-    @stack('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"> @stack('css')
 
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
@@ -20,7 +18,12 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110999096-1"></script>
-    <script>window.dataLayer = window.dataLayer || [];function gtag() { dataLayer.push(arguments); }gtag('js', new Date());gtag('config', 'UA-110999096-1');</script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() { dataLayer.push(arguments); } gtag('js', new Date());
+    gtag('config', 'UA-110999096-1');
+    </script>
 
 
 </head>
@@ -65,22 +68,22 @@
 
         <!-- footer -->
         <footer class="footer">
-            <div class="ui container">
-                <div class="content">
-                    <img src="{{asset('images/logo.png')}}" alt="Promografi Logo" class="logo">
-                    <p>Address: New York, United States 090</p>
-                    <p>Email: contact@yourstore.com</p>
-                    <p>Phone: +19993394</p>
-                    <div class="social-link">
-                        <a href=""><i class="fa fa-facebook"></i></a>
-                        <a href=""><i class="fa fa-twitter"></i></a>
-                        <a href=""><i class="fa fa-instagram"></i></a>
-                        <a href=""><i class="fa fa-google"></i></a>
-                    </div>
-                </div>
-            </div>
             <div class="reserved">
-                <p>Copyright © All Right Reserved</p>
+
+                <div class="ui container">
+                    <div class="ui grid">
+                        <div class="content">
+                            <div class="four column">
+                                <img src="{{asset('images/logo.png')}}" alt="Promografi Logo" class="logo">
+                                <h1>Platform untuk menemukan info promo, diskon, sale dan potongan harga paling murah untuk setiap mall dan pusat belanja di Jakarta</h1>
+
+                                <p>Email: contact@yourstore.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </footer>
         <!-- end footer -->

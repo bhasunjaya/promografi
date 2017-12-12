@@ -3,6 +3,7 @@
 
 <section class="product segments-page divider">
 	<div class="ui container">
+
 		<div class="section-title">
 			<h3>Promo Pilihan</h3>
 			<div class="line"></div>
