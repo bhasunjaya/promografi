@@ -2,21 +2,15 @@ User-agent: *
 Allow: /
  
 # Disallow these directories, url types & file-types
-Disallow: /css
-Disallow: /js
 Disallow: /images
 Disallow: /*?*
 Disallow: /*?
 Disallow: /*.php$
-Disallow: /*.js$
 Disallow: /*.inc$
-Disallow: /*.css$
 Disallow: /*.gz$
 Disallow: /*.wmv$
 Disallow: /*.cgi$
 Disallow: /*.xhtml$
-Allow: /wp-content/uploads/
-Allow: /*?page=*
 
 User-agent: Mediapartners-Google
 Allow: /
