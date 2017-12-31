@@ -16,4 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('instagram', 'Api\InstagramController');
+Route::middleware([])->group(function () {
+    Route::resource('instagram', 'Api\InstagramController');
+    Route::resource('raw', 'Api\RawController');
+    Route::resource('mall', 'Api\MallController');
+    Route::resource('category', 'Api\CategoryController');
+    Route::resource('post', 'Api\PostController');
+});
