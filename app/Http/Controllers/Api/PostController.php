@@ -14,9 +14,16 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $oPost = Post::with('category', 'malls')
+            ->latest();
+        if ($request->get('q')) {
+            $oPost->where('title', 'LIKE', "%" . $request->q . "%");
+        }
+        $posts = $oPost->paginate(5);
+        return $posts;
+        // return view('backend.post.index', compact('posts'));
     }
 
     /**
@@ -78,9 +85,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        $post->load('malls');
+        $post->load('category');
+
+        $selected = [];
+        foreach ($post->malls as $r) {
+            $selected[] = $r->id;
+        }
+        $post->range = ['from' => $post->start_at, 'to' => $post->end_at];
+        $post->selectedmalls = $selected;
+        return $post;
+
     }
 
     /**
@@ -101,9 +118,39 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $this->validate($request, [
+            'category_id' => 'required',
+            'title' => 'required',
+            'excerpt' => 'required',
+            'content' => 'required',
+            'image' => 'required',
+            'start_at' => 'required',
+            'end_at' => 'required',
+        ]);
+
+        $excepts = $request->only([
+            'category_id',
+            'title',
+            'excerpt',
+            'content',
+            'image',
+            'start_at',
+            'end_at',
+            'raw_id',
+            'is_featured',
+            'is_online',
+            'is_publish',
+        ]);
+
+        foreach ($excepts as $k => $v) {
+            $post->$k = $v;
+        }
+
+        $post->save();
+        return $post;
+
     }
 
     /**

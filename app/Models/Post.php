@@ -53,4 +53,5 @@ class Post extends Model
     {
         return $q->where('is_online', true);
     }
+
 }
