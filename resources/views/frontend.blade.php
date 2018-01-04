@@ -53,7 +53,7 @@
                     <!-- navbar logo -->
                     <div class="six wide column">
                         <div class="navbar-logo">
-                            <a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt="Promografi diskon promo"></a>
+                            <a href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt="Promografi diskon promo" title="Promografi diskon promo info"></a>
                         </div>
                     </div>
 
@@ -73,10 +73,14 @@
                     <div class="ui grid">
                         <div class="content">
                             <div class="four column">
-                                <img src="{{asset('images/logo.png')}}" alt="Promografi Logo" class="logo">
+                                <img src="{{asset('images/logo.png')}}" alt="Promografi Logo" class="logo" title="logo diskon promo untuk promografi">
+                                @if(isset($frontpage))
                                 <h1>Platform untuk menemukan info promo, diskon, sale dan potongan harga paling murah untuk setiap mall dan pusat belanja di Jakarta</h1>
+                                @else
+                                <h2>Platform untuk menemukan info promo, diskon, sale dan potongan harga paling murah untuk setiap mall dan pusat belanja di Jakarta</h2>
+                                @endif
 
-                                <p>Email: contact@yourstore.com</p>
+                                <p>Email: admin@promografi.id</p>
                             </div>
                         </div>
                     </div>

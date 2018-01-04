@@ -1,4 +1,6 @@
-@extends('frontend') @section('content')
+@extends('frontend')
+
+@section('content')
 
 
 <section class="product segments-page divider">
@@ -12,7 +14,7 @@
 			@foreach($featured as $post)
 			<div class="four wide column pr">
 				<div class="content">
-					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}" title="{{$post->title}}"></a>
 					<a href="{{url('promo/'.$post->slug)}}">
 						<h2>{{$post->title}}</h2>
 					</a>
@@ -35,7 +37,7 @@
 			@foreach($missit as $post)
 			<div class="four wide column pr">
 				<div class="content">
-					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"  title="{{$post->title}}"></a>
 					<a href="{{url('promo/'.$post->slug)}}">
 						<h2>{{$post->title}}</h2>
 					</a>
@@ -45,7 +47,7 @@
 			@endforeach
 			<div class="sixteen wide column full">
 				<div class="link">
-					<a href="{{url('promo')}}" class="link-color">Promo yang akan berakhir lainnya <i class="fa fa-angle-right"></i></a>
+					<a href="{{url('promo')}}" class="link-color">Promo yang akan berakhir lainnya <i class="fa fa-angle-right" title="{{$post->title}}"></i></a>
 				</div>
 			</div>
 
@@ -63,7 +65,7 @@
 			@foreach($recent as $post)
 			<div class="four wide column pr">
 				<div class="content">
-					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"></a>
+					<a href="{{url('promo/'.$post->slug)}}"><img src="{{$post->image}}" alt="{{$post->title}}"  title="{{$post->title}}"></a>
 					<a href="{{url('promo/'.$post->slug)}}">
 						<h2>{{$post->title}}</h2>
 					</a>
@@ -91,7 +93,7 @@
 			@foreach($malls as $mall)
 			<div class="two wide column pr">
 				<div class="content-image">
-					<a href="{{url('mall/'.$mall->slug)}}"><img src="{{asset('uploads/'.$mall->image)}}" alt="{{$mall->title}} {{$mall->city}}"></a>
+					<a href="{{url('mall/'.$mall->slug)}}"><img src="{{asset('uploads/'.$mall->image)}}" alt="{{$mall->title}} {{$mall->city}}"  title="{{$post->title}}"></a>
 				</div>
 			</div>
 			@endforeach
